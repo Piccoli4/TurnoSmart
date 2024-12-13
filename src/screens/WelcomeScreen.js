@@ -27,10 +27,10 @@ const WelcomeScreen = () => {
                 </View>
             </View>
             <View style={styles.buttonsContainer}>
-                <Pressable style={styles.loginButton} onPress={()=>console.log("Funciona")}>
+                <Pressable style={styles.loginButton} onPress={()=>console.log("Funciona login")}>
                     <Text style={styles.loginText}>Iniciar Sesión</Text>
                 </Pressable>
-                <Pressable style={styles.signUpButton} onPress={()=>console.log("Funciona")}>
+                <Pressable style={styles.signUpButton} onPress={()=>console.log("Funciona sign up")}>
                     <Text style={styles.signUpButtonText}>Registrarse</Text>
                 </Pressable>
             </View>
@@ -44,7 +44,7 @@ export default WelcomeScreen
 const styles = StyleSheet.create({
     background: {
         flex: 1
-      },
+    },
     container: {
         width: '100%',
         flex: 1,
