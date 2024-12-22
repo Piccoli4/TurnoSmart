@@ -4,25 +4,55 @@
     "slug": "TurnoSmart",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/img/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.piccoli.TurnoSmart"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/img/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.piccoli.TurnoSmart",
+      "newArchEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/img/logo.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "La aplicación accede a tus fotos para permitirte compartirlas con la Asociación Regional de Básquet Pancho Ramírez."
+        }
+      ],
+      "expo-sqlite"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "fc090c98-0278-48c7-a22f-b75a8a1e1264"
+      },
+      "API_KEY": "AIzaSyAP40JtMRv5agi2PzgYtRx3_WYF6bHDUZw",
+      "AUTH_DOMAIN": "turnosmart-e0ccc.firebaseapp.com",
+      "PROJECT_ID": "turnosmart-e0ccc",
+      "STORAGE_BUCKET": "turnosmart-e0ccc.firebasestorage.app",
+      "MESSAGING_SENDER_ID": "222632204725",
+      "APP_ID": "1:222632204725:web:f90b7f494c70d65ede61fc",
+      "URL_FIREBASE": "https://turnosmart-e0ccc-default-rtdb.firebaseio.com/",
+      "API_AUTH": "AIzaSyAP40JtMRv5agi2PzgYtRx3_WYF6bHDUZw",
+      "URL_AUTH": "https://identitytoolkit.googleapis.com/v1/",
+      "MAP_STATIC_API": "AIzaSyDDQYDoAEsznj7FdIVyrBHZMiKccQiyh-M"
     }
   }
 }
