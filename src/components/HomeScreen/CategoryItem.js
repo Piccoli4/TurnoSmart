@@ -30,29 +30,29 @@ const CategoryItem = ({ item }) => {
 export default CategoryItem
 
 const styles = StyleSheet.create({
-    categoryContainer: {
-        backgroundColor: 'transparent',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        borderWidth: 3,
-        borderColor: '#022974',
-        borderRadius: 6,
-        padding: 5,
-        margin: 5,
-        width: '80%'
-    },
-    categoryIcon: {
-        width: 45,
-        height: 45,
-        marginBottom: 5,
-    },
-    categoryName: {
-        fontSize: 18,
-        color: '#000',
-        fontWeight: '600',
-        textShadowColor: '#CCC',
-        textShadowOffset: {width: 0.8, height: 0.8},
-        textShadowRadius: 0.9
-    }
+  categoryContainer: {
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderWidth: 3,
+    borderColor: '#022974',
+    borderRadius: 6,
+    padding: 5,
+    margin: 5,
+    width: '80%'
+  },
+  categoryIcon: {
+    width: 45,
+    height: 45,
+    marginBottom: 5,
+  },
+  categoryName: {
+    fontSize: 18,
+    color: '#000',
+    fontWeight: '600',
+    textShadowColor: '#CCC',
+    textShadowOffset: {width: 0.8, height: 0.8},
+    textShadowRadius: 0.9
+  }
 })

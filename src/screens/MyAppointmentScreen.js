@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useGetAllAppointmentsQuery } from '../services/appointmets';
+import { useGetAllAppointmentsQuery } from '../services/appointments';
 import moment from 'moment';
 import Loading from '../components/Loading';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ const MyAppointmentScreen = () => {
   const localId = useSelector((state) => state.auth.localId); // Obtiene el localId del usuario autenticado
 
   const { data, error, isLoading } = useGetAllAppointmentsQuery();
-  const [appointments, setAppointments] = useState([]);
+  const [ appointments, setAppointments ] = useState([]);
 
   useEffect(() => {
     if (data) {

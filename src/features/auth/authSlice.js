@@ -8,7 +8,8 @@ const initialState = {
   lastName: '',
   image: '',
   dni: '',
-  birthDate: '' 
+  birthDate: '',
+  role: 'user' // Valor predeterminado 
 }
 
 export const authSlice = createSlice({
@@ -16,24 +17,26 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-        state.localId = action.payload.localId 
-        state.email = action.payload.email
-        state.idToken = action.payload.idToken
-        state.name = action.payload.name
-        state.lastName = action.payload.lastName
-        state.image = action.payload.image
-        state.dni = action.payload.dni;
-        state.birthDate = action.payload.birthDate; 
+      state.localId = action.payload.localId 
+      state.email = action.payload.email
+      state.idToken = action.payload.idToken
+      state.name = action.payload.name
+      state.lastName = action.payload.lastName
+      state.image = action.payload.image
+      state.dni = action.payload.dni
+      state.birthDate = action.payload.birthDate 
+      state.role = action.payload.role; // Actualiza el rol
     },
     clearUser: (state, action) => {
-        state.localId = ""
-        state.email = ""
-        state.idToken = ""
-        state.name = ""
-        state.lastName = ""
-        state.image = ""
-        state.dni = '';
-        state.birthDate = '';
+      state.localId = ""
+      state.email = ""
+      state.idToken = ""
+      state.name = ""
+      state.lastName = ""
+      state.image = ""
+      state.dni = ''
+      state.birthDate = ''
+      state.role = ''
     }
   },
 })

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useGetAllAppointmentsQuery } from '../services/appointmets';
+import { useGetAllAppointmentsQuery } from '../services/appointments';
 import moment from 'moment';
 import Loading from '../components/Loading';
 import { useSelector } from 'react-redux';

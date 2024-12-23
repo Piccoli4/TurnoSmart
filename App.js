@@ -13,12 +13,12 @@ export default function App() {
 
   return (
     <>
+      <StatusBar style="auto"/>
       <Provider store={store}>
         <SafeAreaProvider>
           <MainNavigator/>
         </SafeAreaProvider>
       </Provider>
-      <StatusBar/>
     </>
   );
 }

@@ -5,7 +5,7 @@ import moment from 'moment';
 export const appointmentsApi = createApi({
   reducerPath: 'appointmentsApi',
   baseQuery: fetchBaseQuery({ baseUrl: URL_FIREBASE }),
-  tagTypes: ['appointments'],
+  tagTypes: ['appointments', 'tests'],
   endpoints: (builder) => ({
     // Obteniene los turnos para una fecha específica
     getAppointments: builder.query({
@@ -97,7 +97,64 @@ export const appointmentsApi = createApi({
       },
       invalidatesTags: ['appointments'],
     }),
+
+    // Mutación para agregar un nuevo estudio asociado al usuario por DNI
+    addTest: builder.mutation({
+      async queryFn({ name, lastName, dni, report }) {
+        try {
+          // Validar los datos del formulario
+          if (!name || !lastName || !dni || !report) {
+            return { error: { message: 'El nombre, apellido, DNI y el informe médico son obligatorios.' } };
+          }
+
+          // Estructura del nuevo estudio
+          const newTest = {
+            name,
+            lastName,
+            dni,
+            report,
+            createdAt: new Date().toISOString(),
+          };
+
+          // Genera un identificador único basado en timestamp
+          const studyId = new Date().getTime();
+
+          // Subir el estudio bajo el DNI con el ID único
+          await fetch(`${URL_FIREBASE}/tests/${dni}/${studyId}.json`, {
+            method: 'PUT',
+            body: JSON.stringify(newTest),
+          });
+
+          return { data: newTest };
+        } catch (error) {
+          console.error('Error al subir el test:', error);
+          return { error: { message: error.message } };
+        }
+      },
+      invalidatesTags: ['tests'],
+    }),
+
+    // Obtiene los estudios de un usuario por su DNI
+    getTestsByDni: builder.query({
+      query: () => {
+        return `/tests.json`; // Ruta para obtener todos los estudios asociados al DNI
+      },
+      transformResponse: (response) => {
+        const tests = [];
+        for (const testId in response) {
+          tests.push({ id: testId, ...response[testId] });
+        }
+        return tests;
+      },
+      providesTags: ['tests'],
+    }),
   }),
 });
 
-export const { useGetAppointmentsQuery, useGetAllAppointmentsQuery, useAddAppointmentMutation } = appointmentsApi;
+export const { 
+  useGetAppointmentsQuery, 
+  useGetAllAppointmentsQuery, 
+  useAddAppointmentMutation, 
+  useAddTestMutation,
+  useGetTestsByDniQuery  
+} = appointmentsApi;

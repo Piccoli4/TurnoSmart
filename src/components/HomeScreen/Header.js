@@ -31,9 +31,15 @@ const Header = () => {
             resizeMode='cover'
           />
         </View>
-        <View>
+        <View style={styles.textContainer}>
           <Text style={styles.welcomeText}>Hola,</Text>
-          <Text style={styles.nameText}>{user?.name} {user?.lastName}</Text>
+          <Text 
+            style={styles.nameText}
+            numberOfLines={2}
+            ellipsizeMode="tail" // Agrega "..." si el texto es demasiado largo
+          >
+            {user?.name} {user?.lastName}
+          </Text>
         </View>
       </View>
       <Pressable style={styles.logout} onPress={handleLogout}>
@@ -73,6 +79,9 @@ const styles = StyleSheet.create({
   profileImage: {
     width: '100%',
     height: '100%'
+  },
+  textContainer: {
+    maxWidth: '70%', // Limita el ancho del contenedor de texto
   },
   welcomeText: {
     fontSize: 16,

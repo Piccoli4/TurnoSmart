@@ -1,6 +1,5 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import mypublications from '../../assets/img/mypublications.png';
-import MyDirections from '../../assets/img/mydirections.png';
+import mytests from '../../assets/img/mytests.png';
 import logout from '../../assets/img/logout.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -20,10 +19,10 @@ const ProfileScreen = () => {
   const { data, isSuccess, isLoading, isError } = useGetUserQuery(localId);
 
   // Estado local para manejar los datos del usuario
-  const [userData, setUserData] = useState({ image: '', name: '', lastName: '', email: '' });
+  const [userData, setUserData] = useState({ image: '', name: '', lastName: '', email: '', role: '' });
 
   // Desestructuración de datos del estado local
-  const { image, name, lastName } = userData;
+  const { image, name, lastName, role } = userData;
 
   // Efecto para actualizar los datos del usuario cuando se obtienen desde la base de datos
   useEffect(() => {
@@ -32,7 +31,8 @@ const ProfileScreen = () => {
         image: data.image || '',
         name: data.name || '',
         lastName: data.lastName || '',
-        email: email // El email se obtiene de Redux
+        email: email, // El email se obtiene de Redux
+        role: data.role
       });
     }
   }, [data, isSuccess, email]);
@@ -40,21 +40,31 @@ const ProfileScreen = () => {
   if (isLoading) return <Loading/>
   if (isError) return <Text style={{marginTop: 40}}>Error al cargar datos</Text>
 
-  const menuList = [
+  // Menú para el rol de usuario
+  const userMenuList  = [
     {
       id: 1,
-      name: 'Mis Publicaciones',
-      icon: mypublications,
-      path: 'MyPublications'
+      name: 'Mis Estudios',
+      icon: mytests,
+      path: 'MyTests'
     },
     {
       id: 2,
-      name: 'Mis Direcciones',
-      icon: MyDirections,
-      path: 'MyDirections'
+      name: 'Cerrar Sesión',
+      icon: logout
+    }
+  ];
+
+  // Menú para el rol de admin
+  const adminMenuList = [
+    {
+      id: 1,
+      name: 'Subir Estudios',
+      icon: mytests,
+      path: 'Tests'
     },
     {
-      id: 3,
+      id: 2,
       name: 'Cerrar Sesión',
       icon: logout
     }
@@ -75,14 +85,14 @@ const ProfileScreen = () => {
     <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuPress(item)}>
       <Image
         source={item.icon}
-        style={[
-          styles.menuIcon,
-          item.name === 'Mis Direcciones' && styles.largeIcon
-        ]}
+        style={styles.menuIcon}
       />
       <Text style={styles.menuText}>{item.name}</Text>
     </TouchableOpacity>
   );
+
+  // Determina qué menú mostrar basado en el rol del usuario
+  const menuList = role === 'admin' ? adminMenuList : userMenuList;
 
   return (
     <LinearGradient
@@ -106,6 +116,11 @@ const ProfileScreen = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           style={styles.flatListContainer}
+          getItemLayout={(data, index) => ({
+            length: 60,  // Altura de cada ítem
+            offset: 60 * index,  // El desplazamiento de los ítems
+            index,  // El índice del ítem
+          })}
         />
       </View>
     </LinearGradient>
@@ -162,15 +177,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#02297425'
   },
   menuIcon: {
-    width: 35,
-    height: 35
-  },
-  largeIcon: {
-    width: 40, 
-    height: 40,
+    width: 50,
+    height: 50
   },
   menuText: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: '700',
     textAlign: 'center'
   }

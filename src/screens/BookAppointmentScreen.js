@@ -7,7 +7,7 @@ import { colors } from '../global/colors';
 import TimeModal from '../components/HomeScreen/TimeModal';
 import CustomCalendarModal from '../components/HomeScreen/Calendar';
 import { useSelector } from 'react-redux';
-import { useAddAppointmentMutation, useGetAppointmentsQuery } from '../services/appointmets';
+import { useAddAppointmentMutation, useGetAppointmentsQuery } from '../services/appointments';
 import { useGetUserQuery } from '../services/user';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import Loading from '../components/Loading';

@@ -107,7 +107,8 @@ const SignUpScreen = () => {
           name, 
           lastName,
           dni,
-          birthDate 
+          birthDate,
+          role: 'user' // Asigna un rol predeterminado 
         });
       }
 
@@ -120,7 +121,8 @@ const SignUpScreen = () => {
         lastName,
         dni, 
         birthDate,
-        image: selectedImage 
+        image: selectedImage,
+        role 
       }));
 
       // Si es exitoso navega a Home

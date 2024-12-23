@@ -1,66 +1,56 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import ProfileScreen from '../screens/ProfileScreen'
-import MyPublicationsScreen from '../screens/MyPublicationsScreen'
-import MyDirectionsScreen from '../screens/MyDirectionsScreen'
 import { colors } from '../global/colors'
-import LocationSelector from '../components/ProfileScreen/LocationSelector'
+import TestsScreen from '../screens/TestsScreen'
+import AdminTestsScreen from '../screens/AdminTestsScreen'
 
 const Stack = createStackNavigator()
 
 const ProfileScreenStackNav = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Profile-Tab' component={ProfileScreen} options={{headerShown: false}}/>
       <Stack.Screen 
-        name='MyPublications' 
-        component={MyPublicationsScreen}
+        name='Profile-Tab' 
+        component={ProfileScreen} 
         options={{
-            headerTitle: 'Mis Publicaciones',
+          headerShown: false,
+          headerTitle: ''
+        }}
+      />
+      <Stack.Screen 
+        name='MyTests' 
+        component={TestsScreen}
+        options={{
+            headerTitle: 'Mis Estudios',
             headerStyle: {
-              backgroundColor: colors.violet
+              backgroundColor: colors.red
             },
             headerTintColor: '#FFF',
             headerTitleStyle: {
+              fontSize: 25,
               fontWeight: '600',
               textShadowColor: '#000',
               textShadowOffset: {width: 1, height: 1},
-              textShadowRadius: 0.9 
+              textShadowRadius: 1
             },
             headerBackTitleVisible: false,
           }}
       />
       <Stack.Screen 
-        name='MyDirections' 
-        component={MyDirectionsScreen}
+        name='Tests' 
+        component={AdminTestsScreen}
         options={{
-            headerTitle: 'Mis Direcciones',
+            headerTitle: 'Estudios',
             headerStyle: {
-              backgroundColor: colors.violet
+              backgroundColor: colors.red
             },
             headerTintColor: '#FFF',
             headerTitleStyle: {
+              fontSize: 25,
               fontWeight: '600',
               textShadowColor: '#000',
               textShadowOffset: {width: 1, height: 1},
-              textShadowRadius: 0.9 
-            },
-            headerBackTitleVisible: false,
-          }}
-      />
-      <Stack.Screen 
-        name='LocationSelector' 
-        component={LocationSelector}
-        options={{
-            headerTitle: '',
-            headerStyle: {
-              backgroundColor: colors.violet
-            },
-            headerTintColor: '#FFF',
-            headerTitleStyle: {
-              fontWeight: '600',
-              textShadowColor: '#000',
-              textShadowOffset: {width: 1, height: 1},
-              textShadowRadius: 0.9 
+              textShadowRadius: 1
             },
             headerBackTitleVisible: false,
           }}

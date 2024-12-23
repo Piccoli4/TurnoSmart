@@ -4,6 +4,7 @@ import { colors } from '../global/colors';
 import BookAppointmentScreen from '../screens/BookAppointmentScreen';
 import MyAppointmentScreen from '../screens/MyAppointmentScreen'
 import HistoryAppointmentScreen from '../screens/HistoryAppointmentScreen'
+import AppointmentsBookedScreen from '../screens/AppointmentsBookedScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +14,12 @@ const HomeScreenStackNav = () => {
       <Stack.Screen 
         name="Home" 
         component={HomeScreen} 
-        options={{ headerShown: false, headerBackTitleVisible: false,}}
+        options={{ 
+          headerShown: false, 
+          headerTitle: '',
+          headerBackTitleVisible: false,
+
+        }}
       />
       <Stack.Screen 
         name="BookAppointment" 
@@ -55,6 +61,24 @@ const HomeScreenStackNav = () => {
         name="HistoryAppointment" 
         component={HistoryAppointmentScreen} 
         options={({ route }) => ({ title: route.params.category,
+          headerStyle: {
+            backgroundColor: colors.red
+          },
+          headerTintColor: '#FFF',
+          headerTitleStyle: {
+            fontSize: 24,
+            fontWeight: '600',
+            textShadowColor: '#000',
+            textShadowOffset: {width: 1, height: 1},
+            textShadowRadius: 0.9 
+          },
+          headerBackTitleVisible: false,
+        })}
+      />
+      <Stack.Screen 
+        name="AppointmentsBooked" 
+        component={AppointmentsBookedScreen} 
+        options={({ route }) => ({ title: "Turnos Reservados",
           headerStyle: {
             backgroundColor: colors.red
           },

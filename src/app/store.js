@@ -4,7 +4,7 @@ import authReducer from '../features/auth/authSlice'
 import { authApi } from '../services/auth'
 import { homegetsApi } from '../services/homegets'
 import { userApi } from '../services/user'
-import { appointmentsApi } from '../services/appointmets'
+import { appointmentsApi } from '../services/appointments'
 
 export const store = configureStore({
   reducer: {
