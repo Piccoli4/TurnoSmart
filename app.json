@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TurnoSmart",
-    "slug": "TurnoSmart",
+    "slug": "turnosmart",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/img/logo.png",
@@ -41,7 +41,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "fc090c98-0278-48c7-a22f-b75a8a1e1264"
+        "projectId": "713a9490-e4ab-49bf-a95e-bc84f3dac873"
       },
       "API_KEY": "AIzaSyAP40JtMRv5agi2PzgYtRx3_WYF6bHDUZw",
       "AUTH_DOMAIN": "turnosmart-e0ccc.firebaseapp.com",
@@ -53,6 +53,7 @@
       "API_AUTH": "AIzaSyAP40JtMRv5agi2PzgYtRx3_WYF6bHDUZw",
       "URL_AUTH": "https://identitytoolkit.googleapis.com/v1/",
       "MAP_STATIC_API": "AIzaSyDDQYDoAEsznj7FdIVyrBHZMiKccQiyh-M"
-    }
+    },
+    "owner": "piccoli"
   }
 }
